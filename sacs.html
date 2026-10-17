@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sacs – Not your pretty little thing</title>
+<meta name="description" content="Collection de sacs d'inspiration années 60-70. Projet personnel.">
+<meta property="og:title" content="Sacs – Not your pretty little thing">
+<meta property="og:description" content="Projet personnel de Clara Pargade-Richard, sans lien avec la marque.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Figtree:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bandeau">Projet personnel réalisé par Clara Pargade-Richard, sans lien avec la marque.</div>
+<header>
+  <div class="gauche">
+    <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <a class="logo" href="index.html">miu miu</a> <!-- texte seulement : pas le vrai logo -->
+  </div>
+  <nav aria-label="Actions">
+    <a class="contact" href="mailto:clara.pargade2407@gmail.com">Nous contacter</a>
+    <a id="compteur" href="favoris.html" aria-label="Mes favoris" title="Mes favoris"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20C12 20 3.5 14.5 3.5 8.8A4.4 4.4 0 0 1 12 6.9A4.4 4.4 0 0 1 20.5 8.8C20.5 14.5 12 20 12 20Z"/></svg><i class="point" hidden></i></a>
+    <a class="panier" href="panier.html" aria-label="Panier" title="Panier"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><i class="point" hidden></i></a>
+  </nav>
+</header>
+<div class="voile"></div>
+<aside id="menu" class="menu" aria-label="Menu">
+  <button class="menu-fermer" type="button" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+  <nav aria-label="Catégories">
+    <a href="index.html">Accueil</a>
+    <a href="collection.html">La collection</a>
+    <button class="menu-lien" type="button" aria-expanded="false" aria-controls="sous-menu">Prêt-à-porter <span aria-hidden="true">›</span></button>
+    <a href="sacs.html" aria-current="page">Sacs</a>
+    <a href="chaussures.html">Chaussures</a>
+    <a href="accessoires.html">Accessoires</a>
+  </nav>
+  <div id="sous-menu" class="sous-menu" role="group" aria-label="Catégories du prêt-à-porter">
+    <button class="sous-retour" type="button">‹ Retour</button>
+    <nav aria-label="Catégories du prêt-à-porter">
+      <a href="vetements.html" class="tout">Voir tout le prêt-à-porter</a>
+      <a href="robes.html">Robes</a>
+      <a href="tops.html">T-shirts</a>
+      <a href="ensembles.html">Ensembles</a>
+      <a href="jupes.html">Jupes et shorts</a>
+      <a href="manteaux.html">Vestes et manteaux</a>
+    </nav>
+  </div>
+</aside>
+<main>
+  <div class="page-titre">
+    <a class="retour" href="index.html">← Retour à l’accueil</a>
+    <h1>Sacs</h1>
+  </div>
+  <div class="grille grille-6b">
+    <article class="produit grand">
+      <a class="lien-produit" href="produit.html?id=sac-croissant-rouge">
+      <img style="object-position:50% 14%" src="images/sac-croissant-rouge.jpg" alt="Sac rouge">
+      <h3>Sac rouge</h3>
+      </a>
+      <div class="ligne"><span>2 400 €</span><span class="actions"><button class="coeur" data-id="sac-croissant-rouge" aria-pressed="false" aria-label="Ajouter Sac rouge aux favoris">♡</button><button class="sac-btn" data-id="sac-croissant-rouge" aria-pressed="false" aria-label="Ajouter Sac rouge au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+    <article class="produit">
+      <a class="lien-produit" href="produit.html?id=sac-maille-gris">
+      <img src="images/sac-maille-gris.jpg" alt="Sac hobo en maille grise">
+      <h3>Sac hobo en maille grise</h3>
+      </a>
+      <div class="ligne"><span>1 950 €</span><span class="actions"><button class="coeur" data-id="sac-maille-gris" aria-pressed="false" aria-label="Ajouter Sac hobo en maille grise aux favoris">♡</button><button class="sac-btn" data-id="sac-maille-gris" aria-pressed="false" aria-label="Ajouter Sac hobo en maille grise au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+    <article class="produit grand">
+      <a class="lien-produit" href="produit.html?id=sac-bowling-jaune">
+      <img style="object-position:50% 78%" src="images/sac-bowling-jaune.jpg" alt="Sac jaune">
+      <h3>Sac jaune</h3>
+      </a>
+      <div class="ligne"><span>2 950 €</span><span class="actions"><button class="coeur" data-id="sac-bowling-jaune" aria-pressed="false" aria-label="Ajouter Sac jaune aux favoris">♡</button><button class="sac-btn" data-id="sac-bowling-jaune" aria-pressed="false" aria-label="Ajouter Sac jaune au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+    <article class="produit">
+      <a class="lien-produit" href="produit.html?id=sac-toile-beige">
+      <img src="images/sac-toile-beige.jpg" alt="Sac en toile beige et cuir">
+      <h3>Sac en toile beige et cuir</h3>
+      </a>
+      <div class="ligne"><span>1 650 €</span><span class="actions"><button class="coeur" data-id="sac-toile-beige" aria-pressed="false" aria-label="Ajouter Sac en toile beige et cuir aux favoris">♡</button><button class="sac-btn" data-id="sac-toile-beige" aria-pressed="false" aria-label="Ajouter Sac en toile beige et cuir au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+    <article class="produit">
+      <a class="lien-produit" href="produit.html?id=sac-verni-noir">
+      <img src="images/sac-verni-noir.jpg" alt="Sac en cuir verni noir à fermoir">
+      <h3>Sac en cuir verni noir à fermoir</h3>
+      </a>
+      <div class="ligne"><span>2 200 €</span><span class="actions"><button class="coeur" data-id="sac-verni-noir" aria-pressed="false" aria-label="Ajouter Sac en cuir verni noir à fermoir aux favoris">♡</button><button class="sac-btn" data-id="sac-verni-noir" aria-pressed="false" aria-label="Ajouter Sac en cuir verni noir à fermoir au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+    <article class="produit">
+      <a class="lien-produit" href="produit.html?id=sac-vert-eau">
+      <img src="images/sac-vert-eau.jpg" alt="Sac vert d’eau">
+      <h3>Sac vert d’eau</h3>
+      </a>
+      <div class="ligne"><span>1 950 €</span><span class="actions"><button class="coeur" data-id="sac-vert-eau" aria-pressed="false" aria-label="Ajouter Sac vert d’eau aux favoris">♡</button><button class="sac-btn" data-id="sac-vert-eau" aria-pressed="false" aria-label="Ajouter Sac vert d’eau au panier"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button></span></div>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="pied-grille">
+    <div>
+      <p class="pied-logo">miu miu</p>
+      <p>Projet personnel de Clara Pargade-Richard, sans lien avec la marque.</p>
+    </div>
+    <div class="accordeon pied-acc">
+      <details>
+        <summary>Livraison et retours</summary>
+        <p>Livraison offerte, en 3 à 5 jours ouvrés. Expédition sous 48 h, avec un suivi par e‑mail.</p>
+        <p>Retours gratuits sous 30 jours, pour un article non porté, dans son emballage d’origine.</p>
+      </details>
+    </div>
+    <div>
+      <p class="pied-titre">Suivre et écrire</p>
+      <p><a href="https://www.instagram.com/miumiu/" target="_blank" rel="noopener">Instagram</a></p>
+      <p><a href="mailto:clara.pargade2407@gmail.com">Nous contacter</a></p>
+    </div>
+  </div>
+  <p class="pied-bas">© 2026 Projet personnel – Clara Pargade-Richard</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

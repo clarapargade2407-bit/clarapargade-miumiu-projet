@@ -1,0 +1,379 @@
+/* Police du logo : Fraunces (Google Fonts), voir .logo plus bas.
+   Foda Display (police payante) reste disponible : mets le fichier dans le dossier "fonts" (FodaDisplay.otf, .ttf ou .woff2),
+   puis écris 'Foda Display' en premier dans la propriété font-family de .logo et .pied-logo. */
+@font-face {
+  font-family: 'Foda Display';
+  src: local('Foda Display'), url('fonts/FodaDisplay.woff2') format('woff2'), url('fonts/FodaDisplay.otf') format('opentype'), url('fonts/FodaDisplay.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Palette tirée du moodboard : modifie les codes ici, ça change toutes les pages */
+:root {
+  --creme: #F6EBDD; --brun: #3A2218; --bordeaux: #7A1F2B;
+  --moutarde: #D4A72C; --caramel: #A5632D; --rose: #E8B4BC; --bleu-gris: #8FA3B8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Figtree', system-ui, sans-serif; background: var(--creme); color: var(--brun); line-height: 1.6; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.1; color: var(--bordeaux); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--bordeaux); outline-offset: 3px; }
+
+.bandeau { background: var(--brun); color: var(--creme); text-align: center; font-size: .85rem; padding: .5rem 1rem; }
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.2rem 5vw; }
+.logo { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 1.7rem; letter-spacing: -.01em; text-transform: lowercase; text-decoration: none; color: var(--bordeaux); }
+nav { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+nav a { text-decoration: none; font-weight: 600; }
+nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+/* Icône favoris : cœur en contour + petit point quand il y a au moins un favori */
+#compteur { position: relative; display: inline-flex; color: var(--bordeaux); }
+#compteur .point { position: absolute; top: -1px; right: -3px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+#compteur .point[hidden] { display: none; }
+
+.btn { display: inline-block; background: var(--bordeaux); color: var(--creme); padding: .9rem 1.8rem; border-radius: 999px; text-decoration: none; font: inherit; font-weight: 600; border: 0; cursor: pointer; }
+.btn:hover { background: var(--brun); }
+
+/* Accueil : hero */
+.hero { padding: 3rem 5vw 4rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+.hero h1 { font-size: clamp(3rem, 8.5vw, 6.5rem); }
+.hero p { max-width: 38ch; margin: 1.5rem 0 2rem; font-size: 1.15rem; }
+/* TODO : remplace par <img src="images/hero.jpg" alt="..."> */
+.hero-img { aspect-ratio: 4/5; background: var(--moutarde); border-radius: 220px 220px 20px 20px; display: grid; place-items: center; text-align: center; padding: 1rem; }
+
+
+section { padding: 6rem 5vw; }
+section h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 2rem; }
+
+/* Accueil : cartes de catégories */
+.cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.carte { text-decoration: none; display: block; }
+.carte .visuel { aspect-ratio: 4/5; border-radius: 12px; display: grid; place-items: center; transition: transform .2s; }
+
+.carte:nth-child(1) .visuel { background: var(--bordeaux); color: var(--creme); }
+.carte:nth-child(2) .visuel { background: var(--moutarde); }
+.carte:nth-child(3) .visuel { background: var(--bleu-gris); }
+.carte h3 { font-size: 1.6rem; margin-top: .8rem; }
+.carte span { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Pages catégories */
+.page-titre { padding: 4.5rem 5vw 2.5rem; }
+.page-titre h1 { font-size: clamp(2.6rem, 7vw, 5rem); }
+.page-titre p { max-width: 50ch; margin-top: 1rem; font-size: 1.1rem; }
+.retour { display: inline-block; margin-bottom: 2rem; font-weight: 600; }
+.grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 3rem 1.8rem; padding: 2.5rem 5vw 7rem; }
+.produit .visuel { aspect-ratio: 3/4; border-radius: 12px; display: grid; place-items: center; font-size: .9rem; background: var(--bleu-gris); }
+.produit:nth-child(3n+2) .visuel { background: var(--brun); color: var(--creme); }
+.produit:nth-child(3n+3) .visuel { background: var(--caramel); color: var(--creme); }
+/* Photo d'un produit : plein cadre, sans bordure */
+.produit img { display: block; width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; background: var(--bleu-gris); }
+.produit h3 { font-size: 1.4rem; margin-top: .8rem; }
+.ligne { display: flex; justify-content: space-between; align-items: center; }
+.coeur { background: none; border: 2px solid var(--bordeaux); color: var(--bordeaux); border-radius: 999px; width: 2.4rem; height: 2.4rem; font-size: 1.1rem; cursor: pointer; }
+.coeur[aria-pressed="true"] { background: var(--bordeaux); color: var(--creme); }
+
+/* Accueil : inspiration */
+.inspiration { background: var(--creme); }
+.collage { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.collage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.collage div { position: relative; overflow: hidden; aspect-ratio: 3/4; background: #FFFDF8; border-radius: 10px; display: grid; place-items: center; font-size: .8rem; text-align: center; }
+.inspiration small { display: block; margin-top: 1.5rem; }
+.univers { max-width: 68ch; margin: 0 auto; }
+.univers p { margin-bottom: 1rem; font-size: 1.1rem; }
+.newsletter { background: var(--bleu-gris); text-align: center; }
+.newsletter h2 { color: var(--brun); }
+.newsletter form { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.newsletter input { padding: .9rem 1.2rem; border-radius: 999px; border: 2px solid var(--brun); min-width: min(320px, 100%); font: inherit; background: var(--creme); }
+#confirmation { margin-top: 1rem; font-weight: 600; }
+
+footer { padding: 4.5rem 5vw 2rem; margin-top: 1rem; border-top: 1px solid rgba(58,34,24,.2); }
+.pied-grille { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; }
+.pied-logo { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 1.4rem !important; text-transform: none !important; letter-spacing: 0 !important; color: var(--bordeaux); margin-bottom: .8rem; }
+.pied-titre { font-weight: 600; margin-bottom: .8rem; }
+.pied-grille p:not(.pied-titre):not(.pied-logo) { text-transform: none; letter-spacing: .02em; font-size: .9rem; line-height: 1.7; max-width: 34ch; }
+.pied-grille a { text-decoration: none; text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; }
+.accordeon.pied-acc { margin-top: 0; border-top: 0; max-width: 34ch; }
+.accordeon.pied-acc details { border-bottom: 0; }
+.accordeon.pied-acc summary { padding: 0 0 .8rem; font-size: .74rem; color: var(--brun); }
+.accordeon.pied-acc summary::after { font-size: 1.2rem; }
+.pied-bas { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(58,34,24,.2); opacity: .75; }
+
+
+/* ===== Accueil en écrans plein format (body.accueil) ===== */
+html:has(body.accueil) { scroll-snap-type: y mandatory; }
+.accueil .bandeau { position: fixed; bottom: 0; left: 0; right: 0; z-index: 20; padding: .3rem 1rem; font-size: .8rem; }
+.accueil header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: var(--creme); padding-top: .8rem; padding-bottom: .8rem; }
+.accueil footer { scroll-snap-align: end; }
+
+.ecran { height: 100svh; position: sticky; top: 0; box-shadow: 0 -18px 40px rgba(58,34,24,.28); display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; padding: 6rem 5vw 4rem; }
+.ecran h1, .ecran h2 { font-size: clamp(2.8rem, 7.5vw, 6.2rem); }
+.ecran p { max-width: 38ch; margin: 1.5rem 0 2rem; font-size: 1.15rem; }
+.ecran.sombre { color: var(--creme); }
+.ecran.sombre h2 { color: var(--creme); }
+.ecran.sombre .btn { background: var(--creme); color: var(--bordeaux); }
+.ecran.pleine { display: flex; flex-direction: column; justify-content: center; }
+.ecran.pleine .univers-texte { margin-left: auto; margin-right: auto; text-align: center; }
+.ecran.pleine .collage { width: 100%; }
+.ecran.pleine .collage div { max-height: 42svh; }
+
+
+
+/* Effet « la nouvelle page recouvre l'ancienne » : chaque écran est collé en haut (sticky) et le suivant glisse par-dessus.
+   Les .snap sont des repères invisibles qui font s'arrêter le défilement sur chaque écran. */
+.accueil main { position: relative; }
+.snap { position: absolute; left: 0; width: 1px; height: 1px; scroll-snap-align: start; scroll-snap-stop: always; pointer-events: none; }
+
+
+/* Photos en format polaroïd : cadre blanc avec un titre en dessous */
+.polaroid { margin: 0; justify-self: center; width: min(380px, 50svh); background: #FFFDF8; padding: 16px 16px 0; border-radius: 3px; box-shadow: 0 18px 40px rgba(58,34,24,.3); }
+.polaroid .photo { aspect-ratio: 1; display: grid; place-items: center; text-align: center; overflow: hidden; }
+.polaroid .photo { position: relative; flex: none; width: 100%; }
+.polaroid .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.polaroid figcaption { text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; color: var(--brun); font-size: 1.6rem; padding: 1.2rem .5rem 1.5rem; }
+.ecran.inverse .polaroid { order: -1; }
+
+/* En-tête : menu (3 barres) à gauche, contact + favoris + panier à droite */
+.gauche { display: flex; align-items: center; gap: .9rem; }
+.burger, .panier, .menu-fermer { background: none; border: 0; color: var(--bordeaux); cursor: pointer; display: inline-flex; padding: 0; }
+.voile { position: fixed; inset: 0; background: rgba(58,34,24,.45); z-index: 30; opacity: 0; visibility: hidden; transition: opacity .3s; }
+.voile.ouvert { opacity: 1; visibility: visible; }
+.menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(340px, 85vw); background: var(--creme); z-index: 40; padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 2rem; transform: translateX(-100%); visibility: hidden; transition: transform .3s, visibility .3s; }
+.menu.ouvert { transform: none; visibility: visible; }
+.menu nav { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+.menu a { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 2.1rem; color: var(--bordeaux); }
+@media (prefers-reduced-motion: reduce) { .menu, .voile { transition: none; } }
+
+/* Page « La collection » : les catégories en polaroïds cliquables */
+.categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; padding: 2rem 5vw 4rem; }
+.carte-cat { display: block; text-decoration: none; transition: transform .2s; }
+
+@media (prefers-reduced-motion: reduce) { .carte-cat { transition: none; } }
+
+/* Titre de l'écran d'accueil : plus petit car la phrase est longue */
+.ecran h1 { font-size: clamp(2.3rem, 5vw, 4.8rem); }
+.ecran h1 + .lien-simple { margin-top: 2rem; }
+
+/* Menu : « Vêtements » ouvre un second panneau à droite avec les sous-catégories */
+.menu-lien { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: 0; cursor: pointer; text-align: left; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.1rem; color: var(--bordeaux); padding: 0; }
+.menu-lien span { font-size: 1.4rem; transition: transform .2s; }
+.menu-lien[aria-expanded="true"] span { transform: translateX(4px); }
+.menu-lien[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+.sous-menu { position: absolute; top: 0; left: 100%; bottom: 0; width: min(320px, 85vw); background: #FFFDF8; padding: calc(1.4rem + 26px + 2rem) 1.6rem 1.6rem; display: flex; flex-direction: column; gap: 1.5rem; opacity: 0; visibility: hidden; transform: translateX(-16px); transition: opacity .25s, transform .25s, visibility .25s; box-shadow: 10px 0 30px rgba(58,34,24,.18); }
+.sous-menu.ouvert { opacity: 1; visibility: visible; transform: none; }
+.sous-menu nav { flex-direction: column; align-items: flex-start; gap: 1rem; }
+.sous-menu a { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.65rem; font-weight: 500; color: var(--bordeaux); }
+.sous-menu a.tout { font-family: 'Figtree', system-ui, sans-serif; font-size: 1rem; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.sous-retour { display: none; background: none; border: 0; cursor: pointer; color: var(--bordeaux); font: inherit; font-weight: 600; padding: 0; position: absolute; top: 1.4rem; left: 1.6rem; }
+@media (prefers-reduced-motion: reduce) { .sous-menu, .menu-lien span { transition: none; } }
+
+/* Boutons cœur + sac sous les produits, pages Favoris et Panier */
+#compteur, .panier { position: relative; }
+.panier .point { position: absolute; top: -1px; right: -3px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.panier .point[hidden] { display: none; }
+.actions { display: flex; gap: .5rem; }
+.sac-btn { background: none; border: 2px solid var(--bordeaux); color: var(--bordeaux); border-radius: 999px; width: 2.4rem; height: 2.4rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+.sac-btn[aria-pressed="true"] { background: var(--bordeaux); color: var(--creme); }
+.produit h3 a { color: inherit; text-decoration: none; }
+.vide { padding: 1rem 5vw 4rem; font-size: 1.1rem; }
+.vide a { font-weight: 600; }
+.lignes-panier { list-style: none; padding: 1rem 5vw; display: grid; gap: 1rem; }
+.ligne-panier { display: grid; grid-template-columns: 72px 1fr auto auto; gap: 1rem; align-items: center; background: #FFFDF8; padding: .8rem 1rem; border-radius: 10px; }
+.ligne-panier .mini { aspect-ratio: 3/4; width: 100%; object-fit: cover; background: var(--bleu-gris); border-radius: 6px; display: grid; place-items: center; font-size: .7rem; }
+.ligne-panier a { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; color: var(--bordeaux); text-decoration: none; }
+.retirer { background: none; border: 0; color: var(--bordeaux); text-decoration: underline; cursor: pointer; font: inherit; }
+.resume { padding: 1rem 5vw 4rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.resume[hidden] { display: none; }
+.total { font-size: 1.3rem; }
+.total strong { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; color: var(--bordeaux); }
+
+/* Produits cliquables et page produit */
+.lien-produit { display: block; color: inherit; text-decoration: none; }
+.lien-produit:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; padding: 2rem 5vw 3rem; align-items: start; }
+.detail-visuel { aspect-ratio: 3/4; width: 100%; max-height: 80svh; border-radius: 12px; display: grid; place-items: center; overflow: hidden; }
+.detail-visuel:has(img) { aspect-ratio: auto; max-height: none; background: none !important; overflow: visible; }
+.detail-visuel:has(img) { display: block; }
+.detail-visuel img { display: block; width: auto; max-width: 100%; height: auto; max-height: 80svh; margin: 0 auto; border-radius: 12px; }
+.detail-infos h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: .8rem 0 .9rem; }
+@media (min-width: 761px) {
+  /* Fiche produit : la hauteur de la photo est la même pour tous les produits, le titre se place au premier tiers et le reste descend vers le bas de la photo */
+  .detail { --h: min(80svh, calc((90vw - 3rem) / 2 * 1.25)); align-items: start; }
+  .detail-visuel:has(img) { height: var(--h); overflow: hidden; }
+  .detail-visuel img { width: 100%; height: 100%; max-height: none; margin: 0; border-radius: 0; object-fit: cover; object-position: center 25%; }
+  .detail-infos { display: flex; flex-direction: column; min-height: var(--h); }
+  .detail-infos h1 { margin: calc(var(--h) / 3 - 3.5rem) 0 2rem; }
+  .detail-infos .detail-prix { margin: auto 0 1.4rem; }
+  .detail-infos .accordeon { margin-bottom: 6.5rem; }
+}
+.detail-prix { font-size: 1.05rem; font-weight: 400; letter-spacing: .04em; margin-bottom: 2.6rem; }
+.detail-desc { max-width: 46ch; margin-bottom: 2rem; font-size: 1.1rem; }
+.detail-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+.btn.contour { background: none; color: var(--bordeaux); border: 2px solid var(--bordeaux); }
+.btn.contour:hover { background: var(--bordeaux); color: var(--creme); }
+.aussi { padding: 1rem 5vw 4rem; }
+.aussi .grille { padding: 0; }
+
+/* Réaction au survol : le même effet partout (la couleur devient plus foncée) */
+.btn, .coeur, .sac-btn, .burger, .panier, #compteur, .menu-fermer, .retirer, .sous-retour, .menu-lien, .menu a, .sous-menu a, nav a, footer a { transition: background-color .2s, color .2s, border-color .2s; }
+@media (hover: hover) {
+  .coeur:hover, .sac-btn:hover { background: var(--bordeaux); color: var(--creme); }
+  .coeur[aria-pressed="true"]:hover, .sac-btn[aria-pressed="true"]:hover { background: var(--brun); border-color: var(--brun); }
+  .burger:hover, .panier:hover, #compteur:hover, .menu-fermer:hover, .sous-retour:hover, .retirer:hover, .menu-lien:hover, .menu a:hover, .sous-menu a:hover { color: var(--brun); }
+  .ecran.sombre .btn:hover { background: #E3CFB4; }
+  footer a:hover, .retour:hover { text-decoration: underline; }
+}
+
+/* Écrans de catégories : tout l'écran est cliquable (le lien du titre s'étend sur toute la surface) */
+.etendu { color: inherit; text-decoration: none; }
+.etendu::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.etendu:focus-visible { outline: none; }
+.ecran:has(.etendu:focus-visible) { outline: 4px solid var(--bordeaux); outline-offset: -8px; }
+@media (hover: hover) {
+  .ecran:has(.etendu) { cursor: pointer; }
+  .etendu:hover { text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 3px; }
+}
+
+/* Étiquettes : petites majuscules espacées, comme dans le luxe */
+.bandeau, .contact, .retour, .retirer, .sous-retour, .inspiration small, footer, .vide a { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; }
+.btn { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; padding: 1rem 2rem; }
+
+
+/* Fiche produit : « Détail du produit » et « Livraison et retours » s'ouvrent au clic */
+.accordeon { margin-top: 2.5rem; border-top: 1px solid rgba(58,34,24,.25); max-width: 46ch; }
+.accordeon details { border-bottom: 1px solid rgba(58,34,24,.25); }
+.accordeon summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 600; color: var(--bordeaux); transition: color .2s; }
+.accordeon summary::-webkit-details-marker { display: none; }
+.accordeon summary::after { content: "+"; font-size: 1.4rem; font-weight: 400; line-height: 1; }
+.accordeon details[open] summary::after { content: "−"; }
+.accordeon dl div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: .45rem 0; }
+.accordeon dt { font-weight: 600; }
+.accordeon dd { margin: 0; font-size: .95rem; }
+.accordeon details > p { margin: 0 0 .5rem; font-size: .95rem; }
+.accordeon details > :last-child { margin-bottom: 1.2rem; }
+@media (hover: hover) { .accordeon summary:hover { color: var(--brun); } }
+
+/* Mouvement discret : léger zoom au survol, apparition douce au défilement */
+.lien-produit { overflow: hidden; border-radius: 12px; }
+.lien-produit img, .lien-produit .visuel { transition: opacity .4s ease; }
+.js .produit { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.js .produit.vu { opacity: 1; transform: none; }
+@media (hover: hover) { .lien-produit:hover img, .lien-produit:hover .visuel { opacity: .88; } }
+@media (prefers-reduced-motion: reduce) {
+  .js .produit { opacity: 1; transform: none; transition: none; }
+  .lien-produit img, .lien-produit .visuel { transition: none; }
+  .lien-produit:hover img, .lien-produit:hover .visuel { opacity: 1; }
+}
+
+/* Écran d'accueil des catégories : 4 polaroïds côte à côte, chacun cliquable */
+.groupe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; width: 100%; }
+.carte-groupe { display: flex; flex-direction: column; color: inherit; text-decoration: none; }
+.carte-groupe .polaroid { flex: 1; display: flex; flex-direction: column; }
+.carte-groupe .polaroid figcaption { flex: 1; }
+.groupe .polaroid { width: min(100%, 40svh); margin: 0 auto; }
+.groupe .polaroid figcaption { font-size: 1.1rem; line-height: 1.25; padding: 1rem .8rem 1.2rem; }
+.carte-groupe h3 { font-size: 1.7rem; text-align: center; margin-top: 1rem; color: var(--brun); }
+@media (hover: hover) {
+  .carte-groupe:hover h3 { text-decoration: underline; text-underline-offset: 6px; }
+}
+
+/* Accueil : « Découvrir la collection » est un simple lien (tout l'écran est cliquable) */
+.lien-simple { display: inline-block; text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; font-weight: 600; color: var(--bordeaux); text-decoration: underline; text-underline-offset: 6px; }
+@media (hover: hover) { .etendu.lien-simple:hover { color: var(--brun); text-decoration-thickness: 3px; } }
+
+/* Newsletter : le bouton est un simple texte, qui se souligne au survol */
+.newsletter .btn { background: none; color: var(--brun); border-radius: 0; padding: .9rem .3rem; }
+.newsletter .btn:hover { background: none; color: var(--brun); text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; }
+
+/* Pages de produits : certaines photos sont plus grandes (classe « grand » dans le HTML).
+   Chaque mise en page remplit toujours des lignes complètes, sans photo seule.
+   grille-3 : 3 produits · grille-5 : 5 produits, 1 grande · grille-6a : 6 produits, 1 grande · grille-6b : 6 produits, 2 grandes (en quinconce) · grille-8 : 8 produits, 2 grandes empilées à gauche */
+@media (min-width: 761px) {
+  .grille-3, .grille-6a { grid-template-columns: repeat(3, 1fr); }
+  .grille-5, .grille-6b { grid-template-columns: repeat(4, 1fr); }
+  .grille-8 { grid-template-columns: repeat(6, 1fr); }
+
+  .grille-3 > .grand, .grille-5 > .grand, .grille-6a > .grand, .grille-6b > .grand { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; }
+  .grille-3 > .grand .lien-produit, .grille-5 > .grand .lien-produit, .grille-6a > .grand .lien-produit, .grille-6b > .grand .lien-produit { flex: 1; display: flex; flex-direction: column; }
+  .grille-3 > .grand .lien-produit .visuel, .grille-3 > .grand .lien-produit img,
+  .grille-5 > .grand .lien-produit .visuel, .grille-5 > .grand .lien-produit img,
+  .grille-6a > .grand .lien-produit .visuel, .grille-6a > .grand .lien-produit img,
+  .grille-6b > .grand .lien-produit .visuel, .grille-6b > .grand .lien-produit img { flex: 1 1 0; height: 0; min-height: 0; aspect-ratio: auto; }
+  .grille-3 > .grand h3, .grille-5 > .grand h3, .grille-6a > .grand h3, .grille-6b > .grand h3 { font-size: 1.7rem; }
+
+  /* 6 produits, 2 grandes : en quinconce (haut gauche, bas droite) */
+  .grille-6b > .grand { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+  .grille-6b > .grand ~ .grand { grid-column: 3 / span 2; grid-row: 2 / span 2; }
+
+  /* 8 produits, 2 grandes : les 2 grandes empilées à gauche, les 6 autres à droite (2 colonnes × 3) */
+  .grille-8 { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(6, auto); }
+  .grille-8 > .produit { grid-column: auto; grid-row: span 2; }
+  .grille-8 > .grand { grid-column: 1 / span 2; grid-row: 1 / span 3; display: flex; flex-direction: column; }
+  .grille-8 > .grand ~ .grand { grid-row: 4 / span 3; }
+  .grille-8 > .grand .lien-produit { flex: 1; display: flex; flex-direction: column; }
+  .grille-8 > .grand .lien-produit .visuel, .grille-8 > .grand .lien-produit img { flex: 1 1 0; height: 0; min-height: 0; aspect-ratio: auto; }
+  .grille-8 > .grand h3 { font-size: 1.7rem; }
+}
+
+/* Prix : petits, espacés */
+.ligne > span:first-child { letter-spacing: .08em; font-size: .88rem; }
+
+/* ===== Téléphone : un seul glissement de doigt = un écran ===== */
+@media (max-width: 760px) {
+  section { padding: 4rem 6vw; }
+  .page-titre { padding: 3rem 6vw 1.5rem; }
+  footer { padding: 3rem 6vw 1.5rem; }
+  .pied-grille { grid-template-columns: 1fr; gap: 2rem; }
+  .pied-bas { margin-top: 2rem; }
+  nav { gap: .8rem; }
+  .contact { font-size: .7rem; }
+  .detail { grid-template-columns: 1fr; gap: 1.5rem; }
+  .groupe { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .8rem; }
+  .groupe .polaroid { width: 100%; }
+  .groupe .polaroid figcaption { font-size: .85rem; padding: .7rem .5rem .9rem; }
+  .carte-groupe h3 { font-size: 1.35rem; margin-top: .6rem; }
+  /* Pages de produits : 2 produits côte à côte */
+  .grille { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .8rem; }
+  .produit h3 { font-size: 1.2rem; }
+  /* Téléphone : les grandes photos prennent toute la largeur (le nombre total reste pair, donc aucune photo seule).
+     6 produits avec 1 seule grande (vestes, chaussures) : le premier produit est aussi en pleine largeur, pour garder des lignes complètes. */
+  .grille-3, .grille-5, .grille-6a, .grille-6b, .grille-8 { grid-auto-flow: dense; }
+  .grille-6a > .grand, .grille-6a > .produit:first-child, .grille-6a > .grand:first-child ~ .produit:last-child { grid-column: span 2; }
+  .grille-6a > .grand .visuel, .grille-6a > .grand img, .grille-6a > .produit:first-child .visuel, .grille-6a > .produit:first-child img,
+  .grille-6a > .grand:first-child ~ .produit:last-child .visuel, .grille-6a > .grand:first-child ~ .produit:last-child img { aspect-ratio: 4/5; }
+  .grille-3 > .grand, .grille-5 > .grand, .grille-6b > .grand, .grille-8 > .grand { grid-column: span 2; }
+  .grille-3 > .grand .visuel, .grille-3 > .grand img,
+  .grille-5 > .grand .visuel, .grille-5 > .grand img,
+  .grille-6b > .grand .visuel, .grille-6b > .grand img,
+  .grille-8 > .grand .visuel, .grille-8 > .grand img { aspect-ratio: 1/1; }
+  .ligne { gap: .4rem; }
+  .actions { gap: .35rem; }
+  .coeur, .sac-btn { width: 2.1rem; height: 2.1rem; font-size: 1rem; }
+  .ligne-panier { grid-template-columns: 56px 1fr auto; }
+  .retirer { grid-column: 2 / -1; justify-self: start; }
+  .sous-menu { left: 0; width: 100%; box-shadow: none; transform: translateX(24px); }
+  .sous-retour { display: inline-flex; }
+  .categories { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .logo { font-size: 1.4rem; }
+  html:has(body.accueil) { scroll-snap-type: y mandatory; }
+  .ecran { grid-template-columns: 1fr; align-content: center; gap: 1rem; padding: 6rem 6vw 2.5rem; position: relative; height: auto; min-height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; box-shadow: none; }
+  .ecran h1, .ecran h2 { font-size: clamp(2rem, 9vw, 2.7rem); }
+  .ecran h1 { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+  .ecran h1 + .lien-simple { margin-top: 1.2rem; }
+  .ecran p { font-size: 1rem; margin: .8rem 0 1.2rem; }
+  .ecran .btn { padding: .7rem 1.4rem; }
+  .snap { display: none; }
+  .polaroid { width: min(210px, 30svh); padding: 10px 10px 0; }
+  .polaroid figcaption { font-size: 1.2rem; padding: .8rem .3rem 1rem; }
+  .ecran.inverse .polaroid { order: 0; }
+  .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
+  .collage > div { width: calc((100% - 1.2rem) / 3); }
+  .ecran.pleine .collage div { max-height: 22svh; }
+  .ecran.pleine h2 { margin-bottom: 1rem; }
+}
+
+@media (max-width: 760px) {
+  /* Fiche produit : toutes les photos ont le même format */
+  .detail-visuel:has(img) { aspect-ratio: 4 / 5; overflow: hidden; }
+  .detail-visuel img { width: 100%; height: 100%; max-height: none; margin: 0; border-radius: 0; object-fit: cover; object-position: center 25%; }
+}
